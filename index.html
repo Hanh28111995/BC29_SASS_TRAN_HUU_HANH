@@ -20,139 +20,106 @@
   <link rel="stylesheet" href="./css/main.css">
 </head>
 
-<body>
-  <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none;" id="mySidebar">
-    <ul class="navbar-nav" style="align-items: center; text-align: center;">
-      <img src="./images/crest.png" alt=""><br>
-      <li class="nav-item " style="margin:0; padding:0">
-        <a class="nav-link " href="#">Home</a>
-      </li>
-      <li class="nav-item " style="margin:0; padding:0">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item" style="margin:0; padding:0">
-        <a class="nav-link" href="#">Courses</a>
-      </li>
-      <li class="nav-item" style="margin:0; padding:0">
-        <a class="nav-link" href="#">Blog</a>
-      </li>
-      <li class="nav-item" style="margin:0; padding:0">
-        <a class="nav-link" href="#">Shop</a>
-      </li>
-      <li class="nav-item" style="margin:0; padding:0">
-        <a class="nav-link hanh" href="#">Elements</a>
-      </li>
-      <br>
-      <li class="nav-item-button" style="margin:0; padding:0">
-        <a href="#" style="text-decoration: none; ">
-          <button class="btn_header"><i class="fas fa-phone"></i>(+1) 555
-            234-8765</button>
-        </a>
-      </li>
+<body class="stop-scrolling">
+  <div class="header_navbar gutter w3-card " id="mySidebar"  >
+    <div class="navbar navbar-nav-fix">
+      <nav class="container-fluid port">
+        <!-- Brand -->
+        <div class="Crest">
+          <a class="navbar-brand d-flex align-items-center" href="#" style="float: left;">
+            <img class="img-fluid" src="./images/crest.png" alt="">
+          </a>
+        </div>
 
-      <li class="nav-item-icon">
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </li>
-    </ul>
+        <!-- Navbar links -->
+        <nav class="navbar nav-text" id="collapsibleNavbar" style="justify-content: flex-end;">
+          <ul class="navbar-nav" style="align-items: center">
+            <li class="nav-item ">
+              <a class="nav-link " href="#">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hanh" href="#">Elements</a>
+            </li>
+            <li class="nav-item-button">
+              <a href="#" style="text-decoration: none; ">
+                <button class="btn_header"><i class="fas fa-phone"></i>(+1) 555
+                  234-8765</button>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav-fix" style="align-items: center">
+            <li class="nav-item-icon">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="nav-item-icon">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li class="nav-item-icon">
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </li>
+            <li class="nav-item-icon">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+          </ul>
+        </nav>
+
+      </nav>
+    </div>
   </div>
 
-  <div id="main" style="transition: transform 0.5s cubic-bezier(.230,1,.320,1);">
-    <div class="wrap_1">
+  <div id="main"  >
+    <div class="wrap_1 ">
 
       <div class="header_sidebar">
-        <button id="openNav" class="sidebar-button w3-xxlarge " style="display: inline-block !important;" onclick="w3_open()">&#9776;</button>
-        <button id="closeNav" class="sidebar-button w3-xxlarge" style="display: none !important;" onclick="w3_close()">&times;</button>
+        <button id="openNav" class="sidebar-button w3-xxlarge " style="display: inline-block !important;"
+          onclick="w3_open()">&#9776;</button>
+        <button id="closeNav" class="sidebar-button w3-xxlarge" style="display: none !important;"
+          onclick="w3_close()">&times;</button>
         <img src="./images/crest.png" alt="" id="icon_h">
 
       </div>
 
-      <div class="header_navbar gutter" id="site-header">
-        <div class="navbar navbar-expand-lg stroke">
-          <nav class="container-fluid port">
-            <!-- Brand -->
-            <div class="Crest">
-              <a class="navbar-brand d-flex align-items-center" href="#" style="float: right;">
-                <img class="img-fluid" src="./images/crest.png" alt="">
-              </a>
-            </div>
 
-            <!-- Navbar links -->
-            <nav class="navbar nav-text" id="collapsibleNavbar" style="justify-content: flex-end;">
-              <ul class="navbar-nav" style="align-items: center">
-                <li class="nav-item ">
-                  <a class="nav-link " href="#">Home</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Courses</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Shop</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link hanh" href="#">Elements</a>
-                </li>
-
-                <li class="nav-item-button">
-                  <a href="#" style="text-decoration: none; ">
-                    <button class="btn_header"><i class="fas fa-phone"></i>(+1) 555
-                      234-8765</button>
-                  </a>
-                </li>
-
-                <li class="nav-item-icon">
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li class="nav-item-icon">
-                  <a href="#"><i class="fab fa-facebook"></i></a>
-                </li>
-                <li class="nav-item-icon">
-                  <a href="#"><i class="fab fa-youtube"></i></a>
-                </li>
-                <li class="nav-item-icon">
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                </li>
-              </ul>
-            </nav>
-            <!-- /topBarInMenu -->
-          </nav>
-        </div>
-      </div>
 
       <section class="section_1">
-        <img src="./images/yellow_top_wave_01.png" alt="" class="img-fluid">
+        <img src="./images/yellow_top_wave_01.png" alt="" >
       </section>
 
       <div class="Content_1">
-        <div class="container">
+        <div class="container" style="z-index: 60;">
           <div class="row" style="align-items: center">
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-6 col-md-12  ">
               <p>ABOUT US</p>
               <h1>The language teaching experts</h1>
             </div>
             <div class="col-lg-6 col-md-12">
-              <img src="./images/hero_team.png" alt="" style="width: 100%;">
+              <img src="./images/hero_team.png" alt="" >
             </div>
           </div>
         </div>
       </div>
 
       <section class="section_2">
-        <img src="./images/Violet_top_left_wave.png" alt="">
+        <img src="./images/Violet_top_left_wave.png" alt="" >
       </section>
     </div>
 
 
     <div class="wrap_2">
-      <div class="service_content text-center pt-5">
+      <div class="service_content text-center py-5">
         <div class="container" style="z-index: 55; position: relative;">
           <div class="row" style="justify-content: center;">
             <div class="col-xl-3 col-sm-6 col-12 text-center align-items-center px-3 py-3">
@@ -241,7 +208,7 @@
           </div>
         </div>
         <section class="section_3">
-          <img src="./images/Wave_White_bottom_right_shape_01.png" alt="" class="img-fluid">
+          <img src="./images/Wave_White_bottom_right_shape_01.png" alt="">
         </section>
       </div>
     </div>
@@ -304,7 +271,7 @@
         </div>
       </div>
       <section class="section_4">
-        <img src="./images/accent_bottom_wave_01.png" alt="" class="img-fluid">
+        <img src="./images/accent_bottom_wave_01.png" alt="" >
       </section>
     </div>
     <footer></footer>
@@ -313,7 +280,7 @@
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -323,7 +290,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <script src="./main.js"></script>
+  <script src="./main.js"></script>
 </body>
 
 </html>

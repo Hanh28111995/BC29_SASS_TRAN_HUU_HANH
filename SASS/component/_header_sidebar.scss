@@ -1,0 +1,36 @@
+.header_sidebar {
+    background-color: #fff;
+    display: none;
+    position: relative;
+    z-index: 55;
+    width: 100%;
+    transform: translateX(0px);
+
+    .sidebar-button {
+      padding-left: 30px;
+      padding-right: 20px;
+      flex-direction: row;
+      border: none;
+      outline: none;
+      justify-content: flex-start;
+      background: transparent;
+      color: #b61984;
+    }
+  }
+  @media only screen and (max-width: 3760px) and (min-width: 1201px) {
+    .header_sidebar {
+        display: none;
+      }
+    #openNav {
+        display: inline-block !important
+      }
+    
+      #closeNav {
+        display: none !important
+      }
+  }
+  @media only screen and (max-width: 1200px) {
+    .header_sidebar {
+        display: flex;
+      }
+  }

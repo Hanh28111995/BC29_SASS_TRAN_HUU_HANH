@@ -1,0 +1,8 @@
+//////////mixin//////////
+/////////background///////////
+@mixin wrap($theme-color) {
+    background-color: $theme-color;
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+}

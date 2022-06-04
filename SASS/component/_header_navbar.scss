@@ -1,0 +1,189 @@
+.header_navbar {
+    @media only screen and (max-width: 1200px) {
+        transform: translateX(-320px);
+        transition: none;
+        text-align: center;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        width: 320px;
+        clear: both;
+        z-index: 101;
+        padding: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: block;
+        visibility: initial;
+        opacity: 1;
+        .navbar-direction {
+            flex-direction: row;
+          }
+        
+          .nav-item-button {
+            margin-left: 0;
+            margin-right: 1em;
+            justify-content: center;
+          }
+        
+          .navbar-nav {
+            display: flex;
+            flex-direction: column !important;
+          }
+        
+          .nav-item {
+            flex-direction: column;
+          }
+        
+          .nav-item {
+            padding: 0;
+          }
+        
+          .nav-item.active {
+            display: none;
+          }
+        
+          .Crest img {
+            width: 90px;
+        
+          }
+    }
+
+    @media only screen and (max-width: 3760px) and (min-width: 1201px) {
+        transform: translateX(0px);
+        background-color: transparent;
+        /* color: #181818; */
+        width: 100%;
+        height: 80px;
+        position: fixed;
+        z-index: 55;
+        top: 0;
+        bottom: 0;
+        display: block;
+        box-shadow: none;
+        transition: none;
+        .navbar-direction {
+            flex-direction: column;
+          }
+        
+          .nav-item-button {
+            margin-left: 35px;
+            margin-right: 0.5em;
+            justify-content: center;
+          }
+        
+        
+          .navbar-nav {
+            display: flex;
+            flex-direction: row !important;
+          }
+        
+          .nav-item {
+            flex-direction: row;
+          }
+        
+          .nav-item {
+            padding: 0 45px 0 0;
+          }
+        
+          .nav-item.active {
+            display: block;
+          }
+        
+          .Crest img {
+            width: 80px;
+        
+          }
+    }
+}
+
+.gutter .port {
+    max-width: 1260px;
+    margin: auto;
+  }
+  
+  .port {
+    width: 100%;
+    padding: 0 30px;
+  }
+  
+  .nav-text ul li {
+    float: left;
+    list-style-type: none;
+  }
+  
+  .nav-text ul li a {
+    text-decoration: none;
+    color: #181818;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  
+  .nav-item-icon {
+    margin-left: 1em;
+    margin-right: 0;
+    font-size: 1.25em;
+  }
+  
+  
+  .navbar {
+    padding: 0 !important;
+  }
+  
+  
+  
+  .nav-item {
+    position: relative;
+  }
+  
+  .nav-item a::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    z-index: 5;
+    bottom: -20px;
+    left: 25px;
+    pointer-events: none;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    transition: 300ms ease all;
+    transform: scale(0);
+    background-color: $theme-color-1;
+  }
+  
+  .nav-item:hover a::after {
+    transform: scale(1.5);
+  }
+  
+  .nav-item.active a::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    z-index: 5;
+    bottom: -20px;
+    left: 25px;
+    pointer-events: none;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    transition: 300ms ease all;
+    transform: scale(1.1);
+    background-color: $theme-color-1;
+  }
+
+  #icon_h {
+    width: 48px;
+    display: inline-block;
+  }
+  
+  .navbar-nav-fix {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+  }
+  
+  .Crest {
+    margin: 0 auto;
+  }

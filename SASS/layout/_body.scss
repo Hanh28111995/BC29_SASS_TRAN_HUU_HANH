@@ -1,0 +1,125 @@
+.stop-scrolling {
+    overflow: hidden;
+    width: 100%;
+}
+
+#main {
+    margin-left: 0% !important;
+}
+
+.wrap_1 {
+    @include wrap($theme-color-2);
+
+    .section_1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 50;
+        width: 100%;
+        img {
+            @extend .section_img;
+        }
+    }
+
+    .Content_1 {
+        display: flex;
+        padding: 5em;
+        // font-family: "Montserrat", Arial, Helvetica, sans-serif;
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: .5em;
+            color: $theme-color-1;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        ;
+    }
+
+    .section_2 {
+        @extend .section;
+
+        img {
+            @extend .section_img;
+        }
+
+    }
+}
+
+.wrap_2 {
+    @include wrap($theme-color-3);
+
+    .service_content {
+        position: relative;
+
+        .container {
+            z-index: 55;
+            position: relative;
+
+            .bg_item {
+                background-color: #fff;
+                border-radius: 15px;
+                padding-bottom: 25px;
+
+                &:hover {
+                    box-shadow: 0 30px 30px -10px rgba(0, 0, 0, 0.2);
+                }
+
+                .item_thumb {
+                    padding-top: 0.5rem;
+
+                    p:first-child {
+                        font-size: .75rem;
+                        margin-bottom: 0.5em;
+                        color: $theme-color-1;
+                    }
+
+                    h2 {
+                        font-size: 1.55rem;
+                        font-weight: 700;
+                        margin-bottom: 1rem;
+                    }
+
+                    p:last-child {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+
+        .section_3 {
+            @extend .section;
+
+            img {
+                @extend .section_img;
+            }
+        }
+    }
+}
+
+.wrap_3 {
+    @include wrap($theme-color-2);
+
+    .Content_2 {
+        z-index: 55;
+        position: relative;
+    }
+    .section_4 {
+        @extend .section;
+
+        img {
+            @extend .section_img;
+        }
+    }
+
+}
