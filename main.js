@@ -1,3 +1,37 @@
+var service = new Services();
+function getEle(id) {
+  return document.getElementById(id);
+}
+function getListProduct() {
+ var promise = service.getListProductApi();
+ promise
+  .then(function (result) {
+    renderListProducts(result.data);
+  })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
+getListProduct();
+function renderListProducts(data) {
+  var contentHTML = "";
+  data.forEach(function (product) {
+    contentHTML += `
+    <div class="col-xl-3 col-sm-6 col-12 text-center align-items-center px-3 py-3">
+              <div class="bg_item">
+                <img src="./images/${product.HinhAnh}" alt="" style="width: 100%; border-radius: 15px 15px 0 0">
+                <div class="item_thumb">
+                  <p>${product.LoaiNgonNgu}</p>
+                  <h2>${product.HoTen}</h2>
+                  <p>${product.Mota}</p>
+                </div>
+              </div>
+            </div>
+    `
+  });
+  getEle("listProduct").innerHTML = contentHTML;
+}
+
 var x0 = 0;
 var x1 = 0;
 var x2 = 0;
@@ -7,63 +41,63 @@ window.onload = function () {
   x1 = x0;
 };
 window.addEventListener('resize', function () {
-  var x = document.getElementById("main").style.transform;
-  var y = document.getElementById("openNav").style.display;
-  var z = document.getElementById("closeNav").style.display;
-  var t = document.getElementById("mySidebar").style.transform;
+  var x = getEle("main").style.transform;
+  var y = getEle("openNav").style.display;
+  var z = getEle("closeNav").style.display;
+  var t = getEle("mySidebar").style.transform;
   x2 = window.innerWidth;
   console.log(x1, x2)
   if (x1 < x2) {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("mySidebar").style.transition = "none";
+    getEle("mySidebar").style.display = "none";
+    getEle("mySidebar").style.transition = "none";
     if ((x2 > 1200) && (t == "translateX(-320px)")) {
-      document.getElementById("mySidebar").style.transform = "translateX(0)";
+      getEle("mySidebar").style.transform = "translateX(0)";
     }
     if ((x2 > 1200) && (x == "translateX(320px)")) {
-      document.getElementById("main").style.transform = "translateX(0)";
+      getEle("main").style.transform = "translateX(0)";
     }
   }
   if (x1 > x2) {
     if (x2 <= 1200) {
       console.log(x1, x2);
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("mySidebar").style.transition = "none";
+      getEle("mySidebar").style.display = "none";
+      getEle("mySidebar").style.transition = "none";
       if (t == "translateX(0px)") {
         console.log(x1, x2);
-        document.getElementById("mySidebar").style.transform = "translateX(-320px)";
+        getEle("mySidebar").style.transform = "translateX(-320px)";
         if (z == "inline-block") {
-          document.getElementById("openNav").style.display = "inline-block";
-          document.getElementById("closeNav").style.display = 'none ';
-          document.getElementById("icon_h").style.display = "inline-block";
+          getEle("openNav").style.display = "inline-block";
+          getEle("closeNav").style.display = 'none ';
+          getEle("icon_h").style.display = "inline-block";
         }
       }
     }
   }
-  document.getElementById("mySidebar").style.display = "block";
+  getEle("mySidebar").style.display = "block";
   x1 = x2;
 });
 
 
 
 function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("main").style.transition = "transform 1s cubic-bezier(.230,1,.320,1) ";
-  document.getElementById("mySidebar").style.transition = "transform 2s cubic-bezier(.230,1,.320,1) ";
-  document.getElementById("main").style.transform = "translateX(320px)";
-  document.getElementById("mySidebar").style.transform = "translateX(0px)";
-  document.getElementById("openNav").style.display = 'none ';
-  document.getElementById("closeNav").style.display = 'inline-block';
-  document.getElementById("icon_h").style.display = 'none ';
+  getEle("mySidebar").style.display = "block";
+  getEle("main").style.transition = "transform 1s cubic-bezier(.230,1,.320,1) ";
+  getEle("mySidebar").style.transition = "transform 2s cubic-bezier(.230,1,.320,1) ";
+  getEle("main").style.transform = "translateX(320px)";
+  getEle("mySidebar").style.transform = "translateX(0px)";
+  getEle("openNav").style.display = 'none ';
+  getEle("closeNav").style.display = 'inline-block';
+  getEle("icon_h").style.display = 'none ';
 
 }
 function w3_close() {
-  document.getElementById("main").style.transition = "transform 2s cubic-bezier(.230,1,.320,1) ";
-  document.getElementById("mySidebar").style.transition = "transform 1s cubic-bezier(.230,1,.320,1) ";
-  document.getElementById("main").style.transform = "translateX(0)";
-  document.getElementById("openNav").style.display = "inline-block";
-  document.getElementById("closeNav").style.display = 'none ';
-  document.getElementById("icon_h").style.display = "inline-block";
-  document.getElementById("mySidebar").style.transform = "translateX(-320px)";
-  document.getElementById("mySidebar").style.display = "block";
+  getEle("main").style.transition = "transform 2s cubic-bezier(.230,1,.320,1) ";
+  getEle("mySidebar").style.transition = "transform 1s cubic-bezier(.230,1,.320,1) ";
+  getEle("main").style.transform = "translateX(0)";
+  getEle("openNav").style.display = "inline-block";
+  getEle("closeNav").style.display = 'none ';
+  getEle("icon_h").style.display = "inline-block";
+  getEle("mySidebar").style.transform = "translateX(-320px)";
+  getEle("mySidebar").style.display = "block";
 }
 
