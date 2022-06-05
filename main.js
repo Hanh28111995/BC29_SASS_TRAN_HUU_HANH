@@ -88,7 +88,7 @@ function w3_open() {
   getEle("openNav").style.display = 'none ';
   getEle("closeNav").style.display = 'inline-block';
   getEle("icon_h").style.display = 'none ';
-
+  getEle("main").style.height = "100vh";
 }
 function w3_close() {
   getEle("main").style.transition = "transform 2s cubic-bezier(.230,1,.320,1) ";
@@ -99,5 +99,27 @@ function w3_close() {
   getEle("icon_h").style.display = "inline-block";
   getEle("mySidebar").style.transform = "translateX(-320px)";
   getEle("mySidebar").style.display = "block";
+  getEle("main").style.height = "100%";
+
 }
+
+$(document).ready(function() {
+  $(window).scroll(function(event) {
+     var pos_body = $('html,body').scrollTop();
+     var check_width = window.innerWidth;
+     console.log(pos_body);
+     if((pos_body>=100)&&(check_width>1200)){
+      getEle("mySidebar").style.backgroundColor = "white";
+      // getEle("mySidebar").style.height = "50px";
+      getEle("offImg").style.width = "0px";
+      offImg
+     }
+     else {
+      getEle("mySidebar").style.backgroundColor = "transparent";
+      // getEle("mySidebar").style.height = "80px";  
+      getEle("offImg").style.width = "80px";
+     }
+  });
+});
+
 
