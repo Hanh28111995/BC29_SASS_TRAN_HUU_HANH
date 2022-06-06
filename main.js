@@ -12,10 +12,11 @@ function getListProduct() {
       console.log(error);
     })
 }
-getListProduct();
 function renderListProducts(data) {
   var contentHTML = "";
   data.forEach(function (product) {
+    if(product.LoaiNguoiDung == "GV")
+    {
     contentHTML += `
     <div class="col-xl-3 col-sm-6 col-12 text-center align-items-center px-3 py-3">
               <div class="bg_item">
@@ -28,9 +29,11 @@ function renderListProducts(data) {
               </div>
             </div>
     `
+  }
   });
   getEle("listProduct").innerHTML = contentHTML;
 }
+getListProduct();
 
 var x0 = 0;
 var x1 = 0;
@@ -46,7 +49,7 @@ window.addEventListener('resize', function () {
   var z = getEle("closeNav").style.display;
   var t = getEle("mySidebar").style.transform;
   x2 = window.innerWidth;
-  console.log(x1, x2)
+  // console.log(x1, x2)
   if (x1 < x2) {
     getEle("mySidebar").style.display = "none";
     getEle("mySidebar").style.transition = "none";
@@ -107,7 +110,6 @@ $(document).ready(function() {
   $(window).scroll(function(event) {
      var pos_body = $('html,body').scrollTop();
      var check_width = window.innerWidth;
-     console.log(pos_body);
      if((pos_body>=100)&&(check_width>1200)){
       getEle("mySidebar").style.backgroundColor = "white";
       // getEle("mySidebar").style.height = "50px";
