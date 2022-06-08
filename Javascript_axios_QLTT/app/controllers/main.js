@@ -1,4 +1,7 @@
+
 var service = new Services();
+var validation = new Validation();
+
 
 function getEle(id) {
   return document.getElementById(id);
@@ -8,7 +11,7 @@ function getListProduct() {
   var promise = service.getListProductApi();
   promise
     .then(function (result) {
-      console.log(result.data)
+      // console.log(result.data)
       renderListProducts(result.data);
     })
     .catch(function (error) {
@@ -40,6 +43,68 @@ function renderListProducts(data) {
 
 getListProduct();
 
+function blank_default() {
+  getEle("TaiKhoan").value = "";
+  getEle("HoTen").value = "";
+  getEle("MatKhau").value = "";
+  getEle("Email").value = "";
+  getEle("HinhAnh").value = "";
+  getEle("loaiNguoiDung").value = "";
+  getEle("loaiNgonNgu").value = "";
+  getEle("MoTa").value = "";
+  getEle("tbTK").style.display = "none";
+  getEle("tbHT").style.display = "none";
+  getEle("tbMK").style.display = "none";
+  getEle("tbEmail").style.display = "none";
+  getEle("tbHA").style.display = "none";
+  getEle("tbLND").style.display = "none";
+  getEle("tbLNN").style.display = "none";
+  getEle("tbMT").style.display = "none";
+}
+
+function check_validation(isAdd) {
+  var tk = getEle("TaiKhoan").value;
+  var hoten = getEle("HoTen").value;
+  var mk = getEle("MatKhau").value;
+  var email = getEle("Email").value;
+  var hinhanh = getEle("HinhAnh").value;
+  var loainguoidung = getEle("loaiNguoiDung").value;
+  var loaingonngu = getEle("loaiNgonNgu").value;
+  var mota = getEle("MoTa").value;
+  var isEmpty = true;
+  if (isAdd) {
+    var promise = service.getListProductApi();
+    promise
+      .then(function (result) {
+        console.log(result.data);
+        isEmpty &= validation.kiemtraRong(tk, "tbTK", "Vui lòng nhập Tài Khoản")
+          && validation.kiemtraTK(tk, "tbTK", "Tài khoản chứa kí tự khôg hợp lệ")
+          && validation.kiemtraTKTontai(tk, "tbTK", "Tài khoản này đã tồn tại", result.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+  isEmpty &= validation.kiemtraRong(hoten, "tbHT", "Vui lòng nhập Họ Tên")
+    && validation.kiemtraTen(hoten, "tbHT", "Họ tên chứa kí tự khôg hợp lệ");
+
+  isEmpty &= validation.kiemtraRong(mk, "tbMK", "Vui lòng nhập Mật khẩu")
+    && validation.kiemtraMatKhau(mk, "tbMK", "Mật khẩu khôg hợp lệ (từ 6-8 ký tự, chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt)");
+
+  isEmpty &= validation.kiemtraRong(email, "tbEmail", "Vui lòng nhập Email")
+    && validation.kỉemtraEmail(email, "tbEmail", "Email khôg hợp lệ");
+
+  isEmpty &= validation.kiemtraRong(hinhanh, "tbHA", "Vui lòng nhập đường dẫn");
+
+  isEmpty &= validation.kiemtraLuachon("loaiNguoiDung", "tbLND", "Vui lòng chọn người dùng");
+
+  isEmpty &= validation.kiemtraLuachon("loaiNgonNgu", "tbLNN", "Vui lòng chọn ngôn ngữ");
+
+  isEmpty &= validation.kiemtraRong(mota, "tbMT", "Vui lòng nhập Mô tả")
+    && validation.kiemtraSokitu(mota, "tbMT", "Tối đa 60 Kí tự");
+  return isEmpty
+}
+
 /////////////////xoa sp/////////
 function deleteProduct(id) {
   // console.log(id);
@@ -56,29 +121,25 @@ getEle("btnThemNguoiDung").onclick = function () {
   document.getElementsByClassName("modal-title")[0].innerHTML = "Thêm người dùng";
   var footer = `<button class = "btn btn-success" onclick="addProduct()">Thêm</button>`;
   document.getElementsByClassName("modal-footer")[0].innerHTML = footer;
-
+  blank_default();
+  getEle("TaiKhoan").disabled = false;
 }
 ////////////////them sp/////////
 function addProduct() {
-  var tk = getEle("TaiKhoan").value;
-  var hoten = getEle("HoTen").value;
-  var mk = getEle("MatKhau").value;
-  var email = getEle("Email").value;
-  var hinhanh = getEle("HinhAnh").value;
-  var loainguoidung = getEle("loaiNguoiDung").value;
-  var loaingonngu = getEle("loaiNgonNgu").value;
-  var mota = getEle("MoTa").value;
-
-  var product = new Product("", hoten, email, hinhanh, loainguoidung, loaingonngu, mota, mk, tk);
-  // console.log(product);
-  service.addProductApi(product)
-    .then(function () {
-      getListProduct();
-      document.getElementsByClassName("close")[0].click();
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
+  var check = check_validation(true);
+  if (!check) return;
+  else {
+    var product = new Product("", hoten, email, hinhanh, loainguoidung, loaingonngu, mota, mk, tk);
+    // console.log(product);
+    service.addProductApi(product)
+      .then(function () {
+        getListProduct();
+        document.getElementsByClassName("close")[0].click();
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
 }
 
 
@@ -87,6 +148,7 @@ function editProduct(id) {
   document.getElementsByClassName("modal-title")[0].innerHTML = "Sửa thông tin";
   var footer = `<button class = "btn btn-success" onclick="updateProduct(${id})">Update</button>`;
   document.getElementsByClassName("modal-footer")[0].innerHTML = footer;
+  blank_default();
   service.getProductApi(id)
     .then(function (result) {
       console.log(result.data);
@@ -98,30 +160,25 @@ function editProduct(id) {
       getEle("loaiNguoiDung").value = result.data.LoaiNguoiDung;
       getEle("loaiNgonNgu").value = result.data.LoaiNgonNgu;
       getEle("MoTa").value = result.data.Mota;
+      getEle("TaiKhoan").disabled = true;
     })
     .catch(function (error) {
       console.log(error);
     })
 }
 function updateProduct(id) {
-  var tk = getEle("TaiKhoan").value;
-  var hoten = getEle("HoTen").value;
-  var mk = getEle("MatKhau").value;
-  var email = getEle("Email").value;
-  var hinhanh = getEle("HinhAnh").value;
-  var loainguoidung = getEle("loaiNguoiDung").value;
-  var loaingonngu = getEle("loaiNgonNgu").value;
-  var mota = getEle("MoTa").value;
-
-  var product = new Product(id, hoten, email, hinhanh, loainguoidung, loaingonngu, mota, mk, tk);
-  service.updateProductApi(product)
-    .then(function () {
-      getListProduct();
-      document.getElementsByClassName("close")[0].click();
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
+  var check = check_validation(false);
+  if (!check) return;
+  else {
+    var product = new Product(id, hoten, email, hinhanh, loainguoidung, loaingonngu, mota, mk, tk);
+    service.updateProductApi(product)
+      .then(function () {
+        getListProduct();
+        document.getElementsByClassName("close")[0].click();
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
 }
-
 
