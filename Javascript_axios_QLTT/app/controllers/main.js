@@ -1,7 +1,14 @@
 
 var service = new Services();
 var validation = new Validation();
-
+var tk;
+var hoten;
+var mk;
+var email;
+var hinhanh;
+var loainguoidung;
+var loaingonngu;
+var mota;
 
 function getEle(id) {
   return document.getElementById(id);
@@ -63,15 +70,15 @@ function blank_default() {
 }
 
 function check_validation(isAdd) {
-  var tk = getEle("TaiKhoan").value;
-  var hoten = getEle("HoTen").value;
-  var mk = getEle("MatKhau").value;
-  var email = getEle("Email").value;
-  var hinhanh = getEle("HinhAnh").value;
-  var loainguoidung = getEle("loaiNguoiDung").value;
-  var loaingonngu = getEle("loaiNgonNgu").value;
-  var mota = getEle("MoTa").value;
-  var isEmpty = true;
+  tk = getEle("TaiKhoan").value;
+  hoten = getEle("HoTen").value;
+  mk = getEle("MatKhau").value;
+  email = getEle("Email").value;
+  hinhanh = getEle("HinhAnh").value;
+  loainguoidung = getEle("loaiNguoiDung").value;
+  loaingonngu = getEle("loaiNgonNgu").value;
+  mota = getEle("MoTa").value;
+  isEmpty = true;
   if (isAdd) {
     var promise = service.getListProductApi();
     promise
